@@ -26,6 +26,10 @@ mongodbConnect();
 
 const Article = require("./models/article");
 
+app.get("/", (req, res) => {
+	res.status(200).json("Server Working");
+});
+
 app.get("/articles", async (req, res) => {
 	try {
 		const articles = await Article.find().sort({ createdAt: "desc" });
@@ -68,7 +72,6 @@ app.patch(
 
 			req.article = article;
 			next();
-
 		} catch (error) {
 			console.log(error);
 			res.status(400).json({ message: error.message });
