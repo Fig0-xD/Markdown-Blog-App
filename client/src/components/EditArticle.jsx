@@ -16,7 +16,7 @@ const EditArticle = () => {
 		setLoading(true);
 		const controller = new AbortController();
 		axios
-			.get(`http://localhost:8000/articles/${params.id}`, {
+			.get(`${process.env.PORT}/articles/${params.id}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
@@ -53,7 +53,7 @@ const EditArticle = () => {
 		// console.log(markdownRef.current.value);
 
 		axios
-			.post(`http://localhost:8000/articles/${params.id}?_method=PATCH`, {
+			.post(`${process.env.PORT}/articles/${params.id}?_method=PATCH`, {
 				title: titleRef.current.value,
 				description: descriptionRef.current.value,
 				markdown: markdownRef.current.value,

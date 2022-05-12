@@ -14,7 +14,7 @@ const NewArticle = () => {
 		event.preventDefault();
 
 		axios
-			.post("http://localhost:8000/articles/new", {
+			.post(`${process.env.PORT}/articles/new`, {
 				title: titleRef.current.value,
 				description: descriptionRef.current.value,
 				markdown: markdownRef.current.value,

@@ -15,7 +15,7 @@ const Articles = () => {
 		setLoading(true);
 
 		axios
-			.get("http://localhost:8000/articles")
+			.get(`${process.env.PORT}/articles`)
 			.then((res) => {
 				if (res.status === 200) {
 					setArticles(res.data);
@@ -33,7 +33,7 @@ const Articles = () => {
 		const controller = new AbortController();
 
 		axios
-			.get("http://localhost:8000/articles", {
+			.get(`${process.env.PORT}/articles`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
