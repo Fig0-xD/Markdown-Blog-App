@@ -9,7 +9,7 @@ const ArticleCard = ({ article, fetchData }) => {
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
 		axios
-			.post(`${process.env.PORT}/articles/${article._id}?_method=DELETE`)
+			.post(`${process.env.REACT_APP_PORT}/articles/${article._id}?_method=DELETE`)
 			.then((res) => {
 				if (res.status === 200) {
 					console.log("Successful deletion");

@@ -13,7 +13,7 @@ const ShowArticle = () => {
 		const controller = new AbortController();
 
 		axios
-			.get(`${process.env.PORT}/articles/${params.id}`, {
+			.get(`${process.env.REACT_APP_PORT}/articles/${params.id}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {

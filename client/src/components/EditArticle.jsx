@@ -16,7 +16,7 @@ const EditArticle = () => {
 		setLoading(true);
 		const controller = new AbortController();
 		axios
-			.get(`${process.env.PORT}/articles/${params.id}`, {
+			.get(`${process.env.REACT_APP_PORT}/articles/${params.id}`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
@@ -48,12 +48,8 @@ const EditArticle = () => {
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
 
-		// console.log(titleRef.current.value);
-		// console.log(descriptionRef.current.value);
-		// console.log(markdownRef.current.value);
-
 		axios
-			.post(`${process.env.PORT}/articles/${params.id}?_method=PATCH`, {
+			.post(`${process.env.REACT_APP_PORT}/articles/${params.id}?_method=PATCH`, {
 				title: titleRef.current.value,
 				description: descriptionRef.current.value,
 				markdown: markdownRef.current.value,

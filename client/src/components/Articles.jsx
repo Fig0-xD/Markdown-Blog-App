@@ -4,8 +4,10 @@ import axios from "axios";
 
 import ArticleCard from "./ArticleCard";
 
+
+
 const Articles = () => {
-	const [articles, setArticles] = useState();
+	const [articles, setArticles] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const [showToast, setShowToast] = useState(false);
@@ -15,7 +17,7 @@ const Articles = () => {
 		setLoading(true);
 
 		axios
-			.get(`${process.env.PORT}/articles`)
+			.get(`${process.env.REACT_APP_PORT}/articles`)
 			.then((res) => {
 				if (res.status === 200) {
 					setArticles(res.data);
@@ -32,8 +34,10 @@ const Articles = () => {
 		setLoading(true);
 		const controller = new AbortController();
 
+		console.log(`${process.env.REACT_APP_PORT}/articles`);
+
 		axios
-			.get(`${process.env.PORT}/articles`, {
+			.get(`${process.env.REACT_APP_PORT}/articles`, {
 				signal: controller.signal,
 			})
 			.then((res) => {
@@ -80,7 +84,7 @@ const Articles = () => {
 						</Spinner>
 					</div>
 				) : (
-					articles.map((article) => (
+					articles && articles.map((article) => (
 						<ArticleCard
 							key={article._id}
 							article={article}
